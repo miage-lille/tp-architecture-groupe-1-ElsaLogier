@@ -1,4 +1,4 @@
-import { Entity } from 'src/shared/entity';
+import { Entity } from '../../shared/entity';
 
 type UserProps = {
   id: string;

@@ -1,5 +1,5 @@
 import { differenceInDays } from 'date-fns';
-import { Entity } from 'src/shared/entity';
+import { Entity } from '../../shared/entity';
 
 type WebinarProps = {
   id: string;
