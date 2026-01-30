@@ -1,11 +1,11 @@
-import { IDateGenerator } from 'src/core/ports/date-generator.interface';
-import { IIdGenerator } from 'src/core/ports/id-generator.interface';
-import { Executable } from 'src/shared/executable';
-import { Webinar } from 'src/webinars/entities/webinar.entity';
-import { WebinarDatesTooSoonException } from 'src/webinars/exceptions/webinar-dates-too-soon';
-import { WebinarNotEnoughSeatsException } from 'src/webinars/exceptions/webinar-not-enough-seats';
-import { WebinarTooManySeatsException } from 'src/webinars/exceptions/webinar-too-many-seats';
-import { IWebinarRepository } from 'src/webinars/ports/webinar-repository.interface';
+import { Executable } from '../../shared/executable';
+import { IWebinarRepository } from '../ports/webinar-repository.interface';
+import { IIdGenerator } from '../../core/ports/id-generator.interface';
+import { IDateGenerator } from '../../core/ports/date-generator.interface';
+import { WebinarDatesTooSoonException } from '../exceptions/webinar-dates-too-soon';
+import { WebinarTooManySeatsException } from '../exceptions/webinar-too-many-seats';
+import { WebinarNotEnoughSeatsException } from '../exceptions/webinar-not-enough-seats';
+import { Webinar } from '../entities/webinar.entity';
 
 type Request = {
   userId: string;
@@ -28,7 +28,7 @@ export class OrganizeWebinars implements Executable<Request, Response> {
     const id = this.idGenerator.generate();
 
     const webinar = new Webinar({
-      id,
+      id: id,
       organizerId: data.userId,
       title: data.title,
       startDate: data.startDate,
